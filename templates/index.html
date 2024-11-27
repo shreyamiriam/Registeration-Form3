@@ -54,6 +54,17 @@
                     </div>
                     <a href="#" class="forgot-pass-link">Forgot password?</a>
                     <button type="submit">Log In</button>
+
+
+
+                    <!-- <div>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <h3>{{ message }}</h3>
+                            {% endfor %}
+                        {% endif %}
+                    </div> -->
+                    
                 </form>
                 <div class="bottom-link">
                     Don't have an account?
@@ -70,6 +81,14 @@
                 <h2>SIGNUP</h2>
                 <form method="POST" action="{% url 'signup' %}">
                     {% csrf_token %}
+
+
+                    {% if error_message %}
+                    <div style="color: red; text-align: center; margin-bottom: 10px;">
+                        {{ error_message }}
+                    </div>
+                    {% endif %}
+                    
                     <div class="input-field">
                         <input type="text" name="username" required>
                         <label>Enter your username</label>
@@ -95,8 +114,34 @@
                             <a href="#" class="option">Terms & Conditions</a>
                         </label>
                     </div>
+
+
+
+
+
+                    <!-- <div>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <h3 style="color: red;">{{ message }}</h3>
+                            {% endfor %}
+                        {% endif %}
+                    </div> -->
+                    
+                  
                     <button type="submit">Sign Up</button>
                 </form>
+
+
+                <div>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <h3 style="color: red;">{{ message }}</h3>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+
+
                 <div class="bottom-link">
                     Already have an account?
                     <a href="#" id="login-link">Login</a>
